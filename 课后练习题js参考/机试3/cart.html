@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		#header {
+			height: 60px;
+			padding: 30px 0 10px 0;
+			border-bottom: 0px solid #339933;
+		}
+
+		#logo {
+			width: 960px;
+			margin: 0 auto;
+		}
+
+		#logo_sou {
+			float: left;
+		}
+
+		#logo_sou dl {
+
+			padding: 0;
+			margin: 0;
+		}
+
+		#logo_sou dd {
+			line-height: 20px;
+			margin-left: -120px;
+		}
+
+		#logo_sou dd h2 {
+			margin: 7px;
+		}
+
+		.mbb {
+			margin-right: 150px;
+			float: left;
+		}
+
+		.gou {
+			padding-top: 5px;
+			float: right;
+			margin-right: 20px;
+			width: "350px";
+			float: right;
+			padding-top: 10px;
+		}
+
+		img {
+			border: 0;
+		}
+
+		/*菜单*/
+		#menu {
+			background: #f53810;
+			line-height: 35px;
+			clear: both;
+			border: 0px solid #000;
+		}
+
+		.nav {
+			margin: 0 auto;
+			width: 960px;
+		}
+
+		.nav ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.nav li {
+			float: left;
+			text-align: center;
+
+		}
+
+		.nav a {
+			display: block;
+			padding: 0 20px;
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.nav a:hover {
+			background: #b5442d;
+
+		}
+
+		/*商品列表部分*/
+		#container {
+			margin: 0 auto;
+			width: 920px;
+			padding: 20px;
+		}
+
+		#container table {
+			width: 920px;
+			font-size: 13px;
+		}
+
+		#container table .td3 {
+			width: 10%;
+			text-align: center;
+		}
+
+		#container table .td4 {
+			width: 20px;
+			text-align: center;
+		}
+
+		#container table .td3 img {
+			width: 90%;
+		}
+
+		#container table .td2 {
+			width: 40%;
+			text-align: left;
+		}
+
+		#container table .td2 p {
+			margin: 0;
+			line-height: 20px;
+
+		}
+
+		#container table .input {
+			text-align: center;
+			width: 30px;
+
+		}
+
+		#container table th,
+		#container table td {
+			border-spacing: 0;
+			border-collapse: collapse;
+			line-height: 20px;
+			padding: 10px 0;
+		}
+
+		#container table th {
+			border-bottom: 2px solid #222;
+		}
+
+		#container table tbody td {
+			border-bottom: 1px dashed #999;
+		}
+
+		#container table tfoot td {
+			text-align: right;
+			padding: 20px 0;
+			border-bottom: 2px solid #222;
+		}
+
+		#container table tfoot td span.price {
+			font-size: 30px;
+			color: #ff0000;
+			font-weight: bold;
+
+		}
+
+		/*页面底部 */
+		#footer {
+			clear: both;
+			width: 960px;
+			margin: 20px auto;
+		}
+	</style>
+	<!--1.引入文件-->
+	<script src="jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+	<!-- 头部logo -->
+	<div id="header" class="">
+		<div id="logo" class="">
+			<div id="" class="mbb">
+				<img src="images/logo.png" alt="" />
+			</div>
+			<div id="logo_sou" class="">
+				<dl>
+					<dd>
+						<h2>购物车</h2>
+					</dd>
+					<dd>您好，欢迎光临!</dd>
+				</dl>
+			</div>
+			<div id="" class="gou">
+				<img src="images/1.png" width="335" height="30" alt="" />
+			</div>
+		</div>
+	</div>
+	<!-- 导航菜单 -->
+	<div id="menu" class="">
+		<div id="" class="nav">
+			<ul>
+				<li><a href="index.html">首页</a></li>
+				<li><a href="login.html">登陆</a></li>
+				<li><a href="register.html">注册</a></li>
+			</ul>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+	<!-- 显示商品详情 -->
+	<div id="container" class="">
+		<table cellspacing="0">
+			<thead>
+				<tr>
+					<th class="td4"><input type="checkbox" name=""></th>
+					<th class="td3"></th>
+					<th class="td2">商品名称</th>
+					<th class="td3">麦包价</th>
+					<th class="td3">数量</th>
+					<th class="td3">优惠</th>
+					<th class="td3">小计</th>
+					<th class="td3">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="td4"><input type="checkbox" name=""></td>
+					<td class="td3"><img src="images/11010401_01_m.jpg" /></td>
+					<td class="td2">
+						<p>[DUDU]简爱系列手提/斜挎包 黑色[DUDU]简爱系列手提/斜挎包 黑色</p>
+						<p>100001</p>
+					</td>
+					<td class="td3">￥288.00</td>
+					<td class="td3">
+						<a href="#">-</a>
+						<input onclick="" class="input" value="0" />
+						<a href="#">+</a>
+					</td>
+					<td class="td3">-￥0.00</td>
+					<td class="td3 xj">￥0.00</td>
+					<td class="td3"><a href="javascript:void()">删除</a></td>
+				</tr>
+				<tr>
+					<td class="td4"><input type="checkbox" name=""></td>
+					<td class="td3"><img src="images/11010401_01_m.jpg" /></td>
+					<td class="td2">
+						<p>[DUDU]简爱系列手提/斜挎包 黑色[DUDU]简爱系列手提/斜挎包 黑色</p>
+						<p>100002</p>
+					</td>
+					<td class="td3">￥188.00</td>
+					<td class="td3">
+						<a href="#">-</a>
+						<input onclick="" class="input" value="0" />
+						<a href="#">+</a>
+					</td>
+					<td class="td3">-￥0.00</td>
+					<td class="td3 xj">￥0.00</td>
+					<td class="td3"><a href="javascript:void()">删除</a></td>
+				</tr>
+				<tr>
+					<td class="td4"><input type="checkbox" name="" checked="checked"></td>
+					<td class="td3"><img src="images/11010401_01_m.jpg" /></td>
+					<td class="td2">
+						<p>[DUDU]简爱系列手提/斜挎包 黑色[DUDU]简爱系列手提/斜挎包 黑色</p>
+						<p>100002</p>
+					</td>
+					<td class="td3">￥88.00</td>
+					<td class="td3">
+						<a href="#">-</a>
+						<input onclick="" class="input" value="5" />
+						<a href="#">+</a>
+					</td>
+					<td class="td3">-￥0.00</td>
+					<td class="td3 xj">￥2000</td>
+					<td class="td3"><a href="javascript:void()">删除</a></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3" style="text-align:left;">
+						<a href="#">批量删除</a>
+					</td>
+					<td colspan="5">
+						<span>共<span class="a">0</span>件商品</span>
+						<span class="">应付金额:</span>
+						<span class="price">￥0.00</span>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		<div id="" class="" style="text-align:right;margin:10px 0">
+			<a href=""
+				style="display:inline-block;width:150px;height:40px;text-align:center;background:#f00;color:#fff;font-weight:bold;line-height:40px;">提交订单</a>
+		</div>
+	</div>
+
+	<!-- 页面底部 -->
+	<div id="footer" class="">
+		<img src="images/footer.PNG" width="960" height="162" alt="" />
+	</div>
+	<script>
+		//入口
+		$(function () {
+			//调用计算
+			js();
+            //全选复选框按钮
+			$("thead :checkbox").on("click",function(){
+				//1.获取自己的选中状态
+				var f=$(this).prop("checked");
+				//设置主体中的为选中
+				$("tbody :checkbox").prop("checked",f);
+				//调用计算计数及总计
+				 js();
+			});
+			//商品前面的复选框按钮
+			$("tbody :checkbox").on("click",function(){
+				js();
+			});
+			//数量文本框失去焦点
+			$("tbody .input").on("blur",function(){
+				//获取自己的值
+				var wbz=$(this).val();
+				if(wbz<1){
+					alert("数量不能少于1");//
+				}else{
+					js();
+				}
+			});
+			//删除按钮
+			$("tbody td a").on("click",function(){
+			
+				var f=confirm("是否真的要删除");
+				if(f){
+					$(this).parent().parent().remove();
+					//计算
+					js();
+				}
+			});
+
+		});
+
+		//由于计算件数，总价几个地方要用
+		function js() {
+			//获取checkbox中选中的,再遍历每一个
+			var zj = 0;//总计
+			var gs=0;//个数
+			console.log(	$("tbody :checkbox:checked").length); //测试
+			$("tbody :checkbox:checked").each(function () {
+				//注意找数量文本
+				var mcsl = parseInt( $(this).parent().parent().find(".input").val());
+			    //alert( $(this).parent().parent().find(".input").val() );
+				gs += mcsl;
+				//找小计  在小计后的class上加一个xj  substr去掉人民币符号
+				var mcsl = parseFloat($(this).parent().parent().find(".xj").text().substr(1));
+				//alert($(this).parent().parent().find(".xj").text().substr(1));
+				zj = zj + mcsl;
+			});
+			//找到要放置的位置 ,个数哪加 class=a
+			$("tfoot .a").html(gs);
+			//找到总计计位置
+			$("tfoot .price").html(zj);
+		}
+	</script>
+</body>
+
+</html>

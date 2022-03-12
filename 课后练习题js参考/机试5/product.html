@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="Generator" content="EditPlus®">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>隔行变色的商品列表</title>
+	<link rel="stylesheet" href="css/product.css">
+</head>
+
+<body>
+	<div class="contain">
+		<table border="0" width="100%" cellspacing="0">
+			<tr class="t-head">
+				<th width="5%"> 全选<input type="checkbox" id="box"></th>
+				<th width="40%">商品</th>
+				<th width="10%">单价</th>
+				<th width="10%">数量</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" name="ch">
+				</td>
+				<td>
+					<img src="images/f1.jpg" width="50" height="50" />
+					<a href="">丹幕妮通勤波点印花毛衣</a>
+				</td>
+				<td>180.0</td>
+				<td>3</td>
+				<td><a href="javascript:void(0);" class="del">删除</a><a href="javascript:void(0);" class="add">新增</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" name="ch">
+				</td>
+				<td>
+					<img src="images/f2.jpg" width="50" height="50" />
+					<a href="">预售太平洋女装连衣裙</a>
+				</td>
+				<td>765.0</td>
+				<td>4</td>
+				<td><a href="javascript:void(0);" class="del">删除</a><a href="javascript:void(0);" class="add">新增</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" name="ch">
+				</td>
+				<td>
+					<img src="images/f3.jpg" width="50" height="50" />
+					<a href="">丹幕妮通勤红色小外套</a>
+				</td>
+				<td>456.0</td>
+				<td>2</td>
+				<td><a href="javascript:void(0);" class="del">删除</a><a href="javascript:void(0);" class="add">新增</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" name="ch">
+				</td>
+				<td>
+					<img src="images/f4.jpg" width="50" height="50" />
+					<a href="">漫巴森秋装新款套头衫</a>
+				</td>
+				<td>140.0</td>
+				<td>1</td>
+				<td><a href="javascript:void(0);" class="del">删除</a><a href="javascript:void(0);" class="add">新增</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" name="ch">
+				</td>
+				<td>
+					<img src="images/f5.png" width="50" height="50" />
+					<a href="">漫巴森秋装新款套头衫</a>
+				</td>
+				<td>140.0</td>
+				<td>1</td>
+				<td><a href="javascript:void(0);" class="del">删除</a>
+					<a href="javascript:void(0);" class="add">新增</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script>
+		$(function(){
+			//给全选框加单击事件
+			$("#box").click(function(){
+				//获取本身的选中的状态
+				var f=$(this).prop("checked");
+				$("table tr:gt(0) :checkbox").prop("checked",f);
+			});
+			//删除按钮事件,
+			$(".del").on("click",function(){
+				$(this).parent().parent().remove();//找tr，从table中移除
+			});
+			//增加按钮事件
+			$(".add").on("click",function(){
+			   var newtr=	$(this).parent().parent().clone(true);//复制一下该行 true 为包括该行中内容
+			   //加这一个新行到表格上
+			   $("table").append(newtr);
+			});
+		});
+	</script>
+</body>
+
+
+</html>

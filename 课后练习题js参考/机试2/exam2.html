@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        table{ width: 600px;}
+        table td{border: 1px solid #ccc;}
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>职位</td>
+            <td>操作</td>
+        </tr>
+        
+    </table>
+    姓名：<input type="text" id="txtname" name="txtname">年龄
+    <input type="text" id="txtage" name="txtage"> 
+   职位：<select name="selzw" id="selzw">
+       <option value="演员">演员</option>
+       <option value="老司机">老司机</option>
+       <option value="老师">老师</option>
+   </select> <input type="button" value="添加" id="btnAdd">
+   <script>
+       //入口函数，加载完后执行
+       $(function(){
+           //加添加按钮写事件,通用加事件方法，
+           $("#btnAdd").on("click",function(){
+                //获取数据
+                var strname=$("#txtname").val();//姓名
+                var strage=$("#txtage").val();//年龄
+                var strzw=$("#selzw").val();//职位
+                //构建一个行dem
+                var strtr="<tr>"
+                +"<td>"+strname+"</td>"
+                +"<td>"+strage+"</td>"
+                +"<td>"+strzw+"</td>"
+                +"<td>"+"<input type=\"button\" value=\"删除\" class=\"del\">"+"</td>"
+                +"</tr>";
+                //加到表格上
+                console.log(strtr);
+                $("table").append(strtr);
+                //给删除也加事件
+                $(".del").on("click",function(){
+                    $(this).parent().parent().remove();
+                });
+           });
+
+           //
+
+       });
+   </script>
+</body>
+</html>

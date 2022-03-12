@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<style>
+    table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        text-align: center;
+        width: 700px;
+        line-height: 30px;
+        /* display: none;  该行注释掉或去掉*/
+    }
+
+    tbody tr {
+        border-bottom: gray solid 2px;
+    }
+
+    thead tr {
+        border-bottom: gray solid 2px;
+    }
+
+    tfoot a {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+
+    <table>
+        <caption>
+            <h1>订单列表</h1>
+        </caption>
+        <thead>
+            <tr>
+                <td>单号</td>
+                <td>单据日期</td>
+                <td>供应商</td>
+                <td>供应商地址</td>
+                <td><input id="mainBtn" type="checkbox" /></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>20200613001</td>
+                <td>2020-06-13</td>
+                <td>株洲总代理1</td>
+                <td>株洲天元地址1</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>20200613002</td>
+                <td>2020-06-14</td>
+                <td>株洲总代理2</td>
+                <td>株洲天元地址2</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>20200613003</td>
+                <td>2020-06-15</td>
+                <td>株洲总代理3</td>
+                <td>株洲天元地址3</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>20200613004</td>
+                <td>2020-06-16</td>
+                <td>株洲总代理4</td>
+                <td>株洲天元地址4</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>20200613005</td>
+                <td>2020-06-17</td>
+                <td>株洲总代理5</td>
+                <td>株洲天元地址5</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>20200613006</td>
+                <td>2020-06-18</td>
+                <td>株洲总代理6</td>
+                <td>株洲天元地址6</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>20200613007</td>
+                <td>2020-06-19</td>
+                <td>株洲总代理7</td>
+                <td>株洲天元地址7</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>20200613008</td>
+                <td>2020-06-20</td>
+                <td>株洲总代理8</td>
+                <td>株洲天元地址8</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>20200613009</td>
+                <td>2020-06-21</td>
+                <td>株洲总代理9</td>
+                <td>株洲天元地址9</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td>202006130010</td>
+                <td>2020-06-22</td>
+                <td>株洲总代理10</td>
+                <td>株洲天元地址10</td>
+                <td><input type="checkbox" /></td>
+            </tr>
+          
+        </tbody>
+        <tfoot>
+            <div>
+                <td><a id="del" href="javascript:void(0)">批量删除</a></td>
+            </div>
+        </tfoot>
+    </table>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        //js部分
+        $(function(){
+            //1.复选框，点击
+            $("thead :checkbox").on("click",function(){
+                var f=$(this).prop("checked");
+                $("tbody :checkbox").prop("checked", f);
+                setTrBack();
+            });
+            //2.点击删除
+            $("#del").on("click",function(){
+               var n= $("tbody :checkbox:checked").length;
+               if(n>0){
+                    var flag=confirm("您确定要删除选中的"+n+"条记录吗");
+                    if(flag){
+                        //删除
+                        $("tbody :checkbox:checked").each(function(){
+                            $(this).parent().parent().remove();//移除行
+                        });
+                    }
+               }else{
+                   alert("请选择要删除的记录!");
+               }
+            });
+            //点击选中行
+            $("tbody :checkbox").click(function(){
+                //
+                setTrBack();
+                //
+            });
+
+        });
+        
+        //设置颜色的方法
+        function setTrBack(){
+            
+            $("tbody :checkbox").each(function(){
+                $(this).parent().parent().css("background","#fff");
+            });
+
+            $("tbody :checkbox:checked").each(function(){
+                $(this).parent().parent().css("background","#ff0");
+            });
+           
+        }
+    </script>
+</body>
+
+</html>

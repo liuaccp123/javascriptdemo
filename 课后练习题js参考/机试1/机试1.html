@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            border: 1px solid red;
+            display: none;
+        }
+    </style>
+    <!--1 引用jquery文件-->
+    <script src="jquery-1.8.3.min.js"></script>
+
+    <script>
+        $(function () {
+            //1 上面添加按钮。单击事件显示表单
+            $("#addBtn").click(function () {
+                //显示添加层显示
+                $("#addForm").show(2000); //显示
+            });
+
+            //2增加按钮事件
+            $("#fAdd").click(function () {
+                //获取增加层中的文本框数据
+                var stri1 = $("#addForm .i1").val(); //.i1 class的有二个 可以用#addForm下面的
+                var stri2 = $("#addForm .i2").val();
+                var stri3 = $("#addForm .i3").val();
+                //把行加到表格中
+                var trstr = "    <tr><td>" + stri1 + "</td><td>" + stri2 + "</td><td>" + stri3 + "</td><td>"
+                    + "<input type=\"button\" class=\"del\" value=\"删除\"> "
+                    + "<input class=\"upd\" type=\"button\" value=\"修改\"></td></tr>";
+                //表格中加创建的行
+                $("table").append(trstr);
+                //多加的按扭加事件,重新绑定一下事件
+                $(".del").on("click", function () {
+                    $(this).parent().parent().remove(); //本行自杀
+                });
+                //清空
+                $("#addForm .i1").val("");
+                $("#addForm .i2").val("");
+                $("#addForm .i3").val("");
+                //隐藏
+                $("#addForm").hide(2000);
+
+            });
+            
+            //3  表格中的删除按钮绑定事件
+            $(".del").on("click", function () {
+                $(this).parent().parent().remove(); //本行自杀
+            });
+
+            var index=0;//保存一个变量，说明是要修改哪一行
+            //4. 表格中的修改按钮及设置事件
+            $(".upd").on("click",function(){
+                //修改层显示出来
+                $("#UpdateForm").show();
+                //获取当前行的数据放到 层的指定位置
+                var bh=$(this).parent().parent().children()[0].innerHTML;
+                var xm=$(this).parent().parent().children()[1].innerHTML;
+                var nl=$(this).parent().parent().children()[2].innerHTML;
+                index=$(this).parent().parent().index();//行索引
+                $("#UpdateForm .i1").val(  bh  );
+                $("#UpdateForm .i2").val(  xm  );
+                $("#UpdateForm .i3").val(  nl  );
+            });
+
+            //4.2 修改数据
+            $("#fUpd").click(function(){
+                //alert(index); //测试获取到第几行
+                 //获取修改层中的文本框数据
+                var stri1 = $("#UpdateForm .i1").val(); //.i1 class的有二个 可以用#addForm下面的
+                var stri2 = $("#UpdateForm .i2").val();
+                var stri3 = $("#UpdateForm .i3").val();
+                $("table tr").eq(index).children()[0].innerHTML=stri1;
+                $("table tr").eq(index).children()[1].innerHTML=stri2;
+                $("table tr").eq(index).children()[2].innerHTML=stri3;
+                //修改层隐藏
+                $("#UpdateForm").hide();
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <input id="addBtn" type="button" value="添加" />
+
+    <table border="1" cellspacing="0">
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>戴老师</td>
+            <td>28</td>
+            <td><input type="button" class="del" value="删除">
+                <input class="upd" type="button" value="修改">
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>王老师</td>
+            <td>30</td>
+            <td><input type="button" class="del" value="删除"> <input class="upd" type="button" value="修改"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>唐老师</td>
+            <td>38</td>
+            <td><input type="button" class="del" value="删除"> <input class="upd" type="button" value="修改"></td>
+        </tr>
+    </table>
+
+    <div id="addForm">
+        <p>编号:<input class="i1" type="text"></p>
+        <p>姓名:<input class="i2" type="text"></p>
+        <p>年龄:<input class="i3" type="text"></p>
+        <input id="fAdd" type="button" value="添加" />
+    </div>
+
+    <div id="UpdateForm">
+        <p>编号:<input class="i1" type="text" readonly></p>
+        <p>姓名:<input class="i2" type="text"></p>
+        <p>年龄:<input class="i3" type="text"></p>
+        <input id="fUpd" type="button" value="修改" />
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

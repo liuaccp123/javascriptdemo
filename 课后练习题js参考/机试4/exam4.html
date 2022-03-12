@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+    <input type="button" value="添加" id="btnAdd">
+    <table border="1">
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>李勇</td>
+            <td>17</td>
+            <td>
+                <input type="button" value="删除" class="del" />
+                <input type="button" value="修改" class="upt" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>李胜</td>
+            <td>18</td>
+            <td>
+                <input type="button" value="删除" class="del" />
+                <input type="button" value="修改" class="upt" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>刘晋</td>
+            <td>16</td>
+            <td>
+                <input type="button" value="删除" class="del" />
+                <input type="button" value="修改" class="upt" />
+
+            </td>
+        </tr>
+
+    </table>
+    <div style="display:none; border: 1px solid red;" id="divAdd">
+        编号：<input type="text" class="i1" /><br />
+        姓名:<input type="text" class="i2" /><br />
+        年龄：<input type="text" class="i3"><br />
+        <button id="btnAddSave">添加</button>
+    </div>
+    <div style="display:none; border: 1px solid red;" id="divupdate">
+        编号：<input type="text" class="i1" /><br />
+        姓名:<input type="text" class="i2" /><br />
+        年龄：<input type="text" class="i3"><br />
+        <button id="btnupdateSave">添加</button>
+    </div>
+    <!--js功能区-->
+    <script>
+        //入口
+        $(function () {
+            //1 上添加按钮
+            $("#btnAdd").on("click", function () {
+                $("#divAdd").show(2000);
+            });
+
+            //2保存添加按钮
+            $("#btnAddSave").on("click", function () {
+                //1.获取增加文本框的文本
+                var strid = $("#divAdd .i1").val();
+                //2姓名字
+                var strname = $("#divAdd .i2").val();
+                //年龄
+                var strsex = $("#divAdd .i3").val();
+                //构建行3
+                var strtr = "  <tr>"
+                    + "  <td>"+strid+"</td>"
+                    + " <td>"+strname+"</td>"
+                    + "  <td>"+strsex+"</td>"
+                    + "  <td>"
+                    + "   <input type=\"button\" value=\"删除\" class=\"del\"/> "
+                    + " <input type=\"button\" value=\"修改\" class=\"upt\"/>"
+                    + "</td></tr>";
+                //加到表格上
+                $("table").append(strtr);
+                //给生成的删除按钮,修改按钮     
+                $(".del").on("click", function () {
+                    $(this).parent().parent().remove();
+                });
+                //修改按钮
+                $(".upt").on("click", function () {
+                    $("#divupdate").show(1000);
+                    //获取值并放置到文本框上
+                    var strid = $(this).parent().parent().children()[0].innerHTML;
+                    var strname = $(this).parent().parent().children()[1].innerHTML;
+                    var strsex = $(this).parent().parent().children()[2].innerHTML;
+                    $("#divupdate .i1").val(strid);
+                    $("#divupdate .i2").val(strname);
+                    $("#divupdate .i3").val(strsex);
+                    //保存行
+                    index = $(this).parent().parent().index();//保存自己的索引
+
+                });
+                //隐藏
+                $("#divAdd").hide(1000);
+            });
+
+
+            ////////////////////
+            //给删除按钮加事件
+            $(".del").on("click", function () {
+                $(this).parent().parent().remove();
+            });
+            //给修改加事件
+            var index = 0;//选中行的索引
+            $(".upt").on("click", function () {
+                $("#divupdate").show(1000);
+                //获取值并放置到文本框上
+                var strid = $(this).parent().parent().children()[0].innerHTML;
+                var strname = $(this).parent().parent().children()[1].innerHTML;
+                var strsex = $(this).parent().parent().children()[2].innerHTML;
+                $("#divupdate .i1").val(strid);
+                $("#divupdate .i2").val(strname);
+                $("#divupdate .i3").val(strsex);
+                //保存行
+                index = $(this).parent().parent().index();//保存自己的索引
+            });
+            //修改按钮
+            $("#btnupdateSave").click(function () {
+                var strid = $("#divupdate .i1").val();
+                //2姓名字
+                var strname = $("#divupdate .i2").val();
+                //年龄
+                var strsex = $("#divupdate .i3").val();
+                //找到要修改的行数据
+                $("table tr").eq(index).find("td").eq(0).html(strid);
+                //
+                $("table tr").eq(index).find("td").eq(1).html(strname);
+                $("table tr").eq(index).find("td").eq(2).html(strsex);
+                //隐藏
+                $("#divupdate").hide(1000);
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>
